@@ -256,7 +256,11 @@ if prompt:
             # Remove the user's message we appended, so it doesn't sit
             # in history without a reply.
             st.session_state.messages.pop()
-        except Exception as e:
-            #st.error(f"Something went wrong: {e}")
-            st.exception(e)
+            
+        except Exception:
+            import traceback
+            st.text(traceback.format_exc())
+        # except Exception as e:
+        #     #st.error(f"Something went wrong: {e}")
+        #     st.exception(e)
             st.session_state.messages.pop()
